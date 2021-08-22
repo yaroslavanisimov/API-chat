@@ -1,0 +1,61 @@
+.chat-wrapper
+  border-right: 1px solid #ccc
+  border-left: 1px solid #ccc
+  height: 90vh
+  position: relative
+
+
+.input-message
+  border-radius: 0
+
+.btn-send-message
+  border-radius: 0
+
+.message-form
+  width: 100%
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+
+.messages
+  overflow-y: scroll
+  height: 90vh
+  padding-bottom: 40px
+
+.message
+  padding: 10px
+
+  &__text
+    font-size: 14px
+    margin-bottom: 0
+
+  &__username
+    font-size: 13px
+
+  &-user
+    &_img
+      & img
+        border-radius: 50%
+        width: 40px
+        height: 40px
+        object-fit: contain
+
+.my-message .message__username
+  color: #537dfc
+
+.my-message:hover
+  background-color: #f4fcff
+
+  .icon-edit
+    visibility: visible
+
+.icon-edit
+  visibility: hidden
+  color: #d9d9d9
+  background: transparent
+  outline: none
+  border: none
+  font-size: 14px
+  padding: 0 2px 0 2px
+  margin-left: 10px
