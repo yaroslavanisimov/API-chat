@@ -1,4 +1,4 @@
-export const mainContent = () => {
+export const mainContent = ({displayName, photoURL}) => {
     const $el = document.createElement('div')
     $el.innerHTML = `
         <div>
@@ -6,8 +6,8 @@ export const mainContent = () => {
             <div class="container">
             <a class="navbar-brand" href="/">Chat</a>
             <button class="btn profile profile-button">
-                <img class="user-img" src="photoURL" alt="user img">
-                <span class="user-name">displayName</span>
+                <img class="user-img" src="${photoURL}" alt="user img">
+                <span class="user-name">${displayName}</span>
             </button>
             </div>
         </nav>

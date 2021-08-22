@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
-import { removeNode } from '../utiles'
+import { getUrlHash, removeNode, renderInDocument, setLocation } from '../utiles'
+import {updateUser} from './userSettings'
 
 const sreateModalAuth = isRegister =>{
     const $el = document.createElement('aside')
@@ -45,10 +46,13 @@ const authEmailAndPassword = async (email, password, username, isRegister) => {
         if (isRegister) {
             const {user} = await firebase.auth().createUserWithEmailAndPassword (email, password)
             // create user 
-            await user.updateProfile ({
-                photoURL: 'https://via.placeholder.com/150',
-                displayName: username || ''
-            })
+
+            await updateUser({
+                ...user,
+                username,
+                userPhoto: 'http://via.placeholder.com/150',
+                userBio: 'bio'
+            }) 
             window.location.reload()
             // page reload method
             setLocation('/')
