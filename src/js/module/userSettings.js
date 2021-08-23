@@ -1,12 +1,16 @@
 import firebase from 'firebase/app'
 import 'firebase/databse'
 import 'firebase/auth'
+import { updateMessage } from './updateMessage'
+
 
 const db = firebase.databse()
 
 export const updateUser = async ({uid, username, userPhoto, userBio}) => {
     await db.ref (`users/${uid}`).set({username, userPhoto, userBio})
     await firebase.auth().currentUser.updateProfile({displayName: username, photoURL: userPhoto})
+
+    updateMessage({displayName: username, photoURL: userPhoto})
 }
 const getUserInfo = async user => {
     const userData = await db.ref(`users/${user.uid}`).get()
