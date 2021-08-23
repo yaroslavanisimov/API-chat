@@ -10,6 +10,8 @@ export const manageMessage = () => {
 
   const openUserProfile = async ({target}) => {
     const userButton = target.closest('[data-user]')
+    const editButton = target.closest('.icon-edit')
+
 
     if (userButton) {
       const uid = userButton.dataset.user
@@ -18,8 +20,21 @@ export const manageMessage = () => {
       userModalImg.src = userPhoto
       userModalBio.textContent = userBio
       userModal.classList.add('show')
-    }
+    } else if (editButton) {
+      const messageWrap = target.closest('[data-key')
+      const id = messageWrap.dataset.key
+      const message = messageWrap.querySelector('.message__text')
+      message.contentEditable = true
+      message.focus()
 
+      const blurMessageHandler = () => {
+        updateMessage({
+          message: message.textContent
+        }, id)
+        message.removeEventListener('blur', blurMessageHandler)
+      }
+      message.addEventListener('blur', blurMessageHandler)
+    }
   }
 
 
