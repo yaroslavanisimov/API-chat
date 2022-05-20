@@ -1,3 +1,3 @@
 # Chat-react-JS
 
-Non-commercial training project in JS, React, Firebase
+Separate API chat using JS,React
